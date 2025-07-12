@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven3'
-        jdk 'JDK 17' 
+        jdk 'JDK 17'
     }
 
     environment {
@@ -13,9 +13,14 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Use Jenkins' native git functionality to clone the repository
-                git url: 'https://github.com/syedmizba/maven-simple.git', branch: 'main'
-                dir('maven-simple') {  // Correct directory name after clone
+                // Checking if the directory exists, if not then clone it
+                script {
+                    def repoDir = 'maven-simple'
+                    if (!fileExists(repoDir)) {
+                        bat "git clone https://github.com/syedmizba/maven-simple.git ${repoDir}"
+                    }
+                }
+                dir('maven-simple') {
                     bat 'dir'  // List the directory to verify the clone
                 }
             }
