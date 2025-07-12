@@ -21,18 +21,18 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>3.8.1</version> <!-- Make sure you're using a compatible plugin version -->
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source> <!-- Set Java source version to 17 -->
+                    <target>17</target> <!-- Set Java target version to 17 -->
                 </configuration>
             </plugin>
 
-            <plugin>  <!-- Create sources.jar -->
+            <!-- Create sources.jar -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -45,6 +45,7 @@
                 </executions>
             </plugin>
 
+            <!-- Create javadoc.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
